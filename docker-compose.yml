@@ -1,0 +1,28 @@
+version: "3.7"
+services:
+  db:
+    image: mysql:8.0.18
+    volumes:
+      - type: volume
+        source: 283c32fc781cc57dfe6e1cc9e7869433c6a53afafa115b670ba56e575422f40b
+        target: /var/lib/mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: password
+    ports:
+      - "3306:3306"
+  web:
+    image: tomcat:9.0.27-jdk11-openjdk
+    volumes:
+      - type: bind
+        source: ./target
+        target: /usr/local/tomcat/webapps/
+    ports:
+      - "8080:8080"
+      - "8000:8000"
+    environment:
+      JAVA_TOOL_OPTIONS: "-agentlib:jdwp=transport=dt_socket,address=8000,server=y,suspend=n"
+      JPDA_ADDRESS: 8000
+      JPDA_TRANSPORT: dt_socket
+volumes:
+  283c32fc781cc57dfe6e1cc9e7869433c6a53afafa115b670ba56e575422f40b:
+    external: true
