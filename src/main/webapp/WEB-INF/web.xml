@@ -3,12 +3,5 @@
          xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee
          http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd"
          version="3.1">
-    <servlet>
-        <servlet-name>hello</servlet-name>
-        <servlet-class>web.servlets.Hello</servlet-class>
-    </servlet>
-    <servlet-mapping>
-        <servlet-name>hello</servlet-name>
-        <url-pattern>/books</url-pattern>
-    </servlet-mapping>
+
 </web-app>
