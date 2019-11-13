@@ -16,15 +16,11 @@ public class HelloFilter extends HttpFilter {
     public void doFilter(ServletRequest req, ServletResponse resp, FilterChain chain) throws IOException, ServletException {
 
         if(req.getParameter("name") == null) {
-            PrintWriter out = resp.getWriter();
-            out.println("<!DOCTYPE html>");
-            out.println("<html>");
-            out.println("<body>");
-            out.println("<code>");
-            out.println("Missing Parameter 'name'.");
-            out.println("</code>");
-            out.println("</body>");
-            out.println("</html>");
+
+            String message = "Missing Parameter 'name'.";
+
+            req.setAttribute("errorMessage", message);
+            req.getRequestDispatcher("error.jsp").forward(req, resp);
             return;
         }
 
