@@ -1,18 +1,18 @@
 <%--
   Created by IntelliJ IDEA.
   User: KaiYi.C
-  Date: 2019/11/6
-  Time: 2:04 PM
+  Date: 2019/11/13
+  Time: 9:49 AM
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>Books</title>
+    <title>Hello</title>
 </head>
 <body>
-Books:
+${requestScope.greeting}
 <br>
-${requestScope.books}
+Count: ${requestScope.count}
 </body>
 </html>

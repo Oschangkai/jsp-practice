@@ -13,7 +13,7 @@ import java.util.List;
 import java.util.concurrent.atomic.AtomicInteger;
 import java.util.stream.Collectors;
 
-@WebServlet(name="HelloWorld", urlPatterns={"/test2"}, loadOnStartup=1)
+@WebServlet(name="HelloWorld", urlPatterns={"/hello"}, loadOnStartup=1)
 public class Hello extends HttpServlet {
 
     private AtomicInteger _counter = null;
@@ -29,20 +29,11 @@ public class Hello extends HttpServlet {
         final String name = req.getParameter("name");
 //        String[] values = req.getParameterValues("param");  // param=10&param=20&param=30
         int count = _counter.incrementAndGet();
-        String books;
-
-        BookRepo br = new BookRepo();
-        List<Book> bookList = br.getAll();
-
-        books = bookList.stream()
-                    .map(Book::toString)
-                    .collect(Collectors.joining(" & "));
 
         req.setAttribute("greeting", String.format("Hello %s!", name));
-        req.setAttribute("books", books);
         req.setAttribute("count", String.valueOf(count));
 
-        req.getRequestDispatcher("/books.jsp").forward(req, resp);
+        req.getRequestDispatcher("/hello.jsp").forward(req, resp);
     }
 
 }
